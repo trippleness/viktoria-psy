@@ -187,8 +187,7 @@
   .mobile-menu__top{
     display:flex;
     align-items:flex-start;
-    justify-content:space-between;
-    gap: 16px;
+    justify-content:flex-start;
     padding-bottom: 18px;
     border-bottom: 1px solid rgba(44,38,34,0.08);
   }
@@ -207,17 +206,6 @@
     line-height: 1.1;
     max-width: 10ch;
   }
-  .mobile-menu__close{
-    width: 42px;
-    height: 42px;
-    border-radius: 14px;
-    flex-shrink: 0;
-    border: 1px solid rgba(44,38,34,0.08);
-    background: rgba(255,255,255,0.76);
-    color: var(--ink);
-    font-size: 22px;
-  }
-
   .mobile-menu__links{
     display:flex;
     flex-direction:column;
@@ -424,7 +412,7 @@
     .hero{ padding: 40px 0 72px; }
     h1{ max-width: none; }
     .hero-sub{ max-width: none; }
-    .hero-visual{ order: -1; padding-top: 30px; }
+    .hero-visual{ padding-top: 0; }
     .photo-card{ max-width: 340px; margin: 0 auto; }
     .quote-card{ left: 50%; transform: translateX(-50%); bottom: -30px; width: calc(100% - 20px); max-width: 300px; }
   }
@@ -474,7 +462,6 @@
         <span class="mobile-menu__eyebrow">Навигация</span>
         <p class="mobile-menu__title">Выберите раздел или сразу запишитесь</p>
       </div>
-      <button class="mobile-menu__close" type="button" aria-label="Закрыть меню">×</button>
     </div>
     <nav class="mobile-menu__links">
       <a href="#about">О работе</a>
@@ -529,7 +516,6 @@
   const menu = document.getElementById('mobile-menu');
   const toggle = document.querySelector('.nav-toggle');
   const backdrop = document.querySelector('.mobile-menu__backdrop');
-  const closeButton = document.querySelector('.mobile-menu__close');
   const menuLinks = document.querySelectorAll('.mobile-menu__links a, .mobile-menu__cta');
 
   function setMenuState(isOpen) {
@@ -546,7 +532,6 @@
   });
 
   backdrop.addEventListener('click', () => setMenuState(false));
-  closeButton.addEventListener('click', () => setMenuState(false));
   menuLinks.forEach((link) => link.addEventListener('click', () => setMenuState(false)));
 
   window.addEventListener('resize', () => {
